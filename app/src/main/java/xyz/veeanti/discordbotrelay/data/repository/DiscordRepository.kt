@@ -64,7 +64,7 @@ class DiscordRepository private constructor(context: Context) {
                 )
             }
 
-            val body = response.body.toString()
+            val body = response.responseBody?.toString() ?: "{}"
             val result = Json.decodeFromString(SendMessageResponse.serializer(), body)
 
             if (result.success == true) {
@@ -98,7 +98,7 @@ class DiscordRepository private constructor(context: Context) {
                 )
             }
 
-            val body = response.body.toString()
+            val body = response.responseBody?.toString() ?: "{}"
             val result = Json.decodeFromString(GetMessagesResponse.serializer(), body)
 
             val messages = result.messages.map { msg ->
