@@ -3,7 +3,6 @@ package xyz.veeanti.discordbotrelay.data.repository
 import android.content.Context
 import io.appwrite.Client
 import io.appwrite.enums.ExecutionMethod
-import io.appwrite.models.Execution
 import io.appwrite.services.Functions
 import xyz.veeanti.discordbotrelay.constants.DiscordConfig
 import xyz.veeanti.discordbotrelay.data.models.Message
@@ -65,7 +64,7 @@ class DiscordRepository private constructor(context: Context) {
                 )
             }
 
-            val body = response.toString()
+            val body = response.body.toString()
             val result = Json.decodeFromString(SendMessageResponse.serializer(), body)
 
             if (result.success == true) {
@@ -99,7 +98,7 @@ class DiscordRepository private constructor(context: Context) {
                 )
             }
 
-            val body = response.toString()
+            val body = response.body.toString()
             val result = Json.decodeFromString(GetMessagesResponse.serializer(), body)
 
             val messages = result.messages.map { msg ->
