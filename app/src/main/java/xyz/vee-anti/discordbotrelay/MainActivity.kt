@@ -1,4 +1,4 @@
-package io.appwrite.starterkit
+package xyz.vee-anti.discordbotrelay
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.appwrite.starterkit.ui.ChatScreen
-import io.appwrite.starterkit.ui.theme.AppwriteStarterKitTheme
+import xyz.vee-anti.discordbotrelay.ui.ChatScreen
+import xyz.vee-anti.discordbotrelay.ui.theme.AppwriteStarterKitTheme
 
 
 class MainActivity : ComponentActivity() {

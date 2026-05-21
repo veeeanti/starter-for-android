@@ -1,10 +1,10 @@
-package io.appwrite.starterkit.data.repository
+package xyz.vee-anti.discordbotrelay.data.repository
 
 import android.content.Context
-import io.appwrite.Client
-import io.appwrite.services.Functions
-import io.appwrite.starterkit.constants.DiscordConfig
-import io.appwrite.starterkit.data.models.Message
+import xyz.vee-anti.Client
+import xyz.vee-anti.services.Functions
+import xyz.vee-anti.discordbotrelay.constants.DiscordConfig
+import xyz.vee-anti.discordbotrelay.data.models.Message
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable

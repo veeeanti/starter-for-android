@@ -1,2 +1,4 @@
 appwrite>=7.0.0
 httpx>=0.24.0
+python-dotenv>=1.2.2
+appwrite

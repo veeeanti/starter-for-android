@@ -1,4 +1,4 @@
-package io.appwrite.starterkit.extensions
+package xyz.vee-anti.discordbotrelay.extensions
 
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle

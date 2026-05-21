@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "io.appwrite.starterkit"
+    namespace = "xyz.vee-anti.discordbotrelay"
     compileSdk = 35
 
     defaultConfig {
@@ -14,7 +14,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-        applicationId = "io.appwrite.starterkit"
+        applicationId = "xyz.vee-anti.discordbotrelay"
     }
 
     buildTypes {

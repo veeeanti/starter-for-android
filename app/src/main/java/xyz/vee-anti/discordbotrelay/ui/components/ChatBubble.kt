@@ -1,4 +1,4 @@
-package io.appwrite.starterkit.ui.components
+package xyz.vee-anti.discordbotrelay.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.appwrite.starterkit.data.models.Message
+import xyz.vee-anti.discordbotrelay.data.models.Message
 import java.text.SimpleDateFormat
 import java.util.Locale
 

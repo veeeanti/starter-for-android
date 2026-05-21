@@ -1,10 +1,10 @@
-package io.appwrite.starterkit.viewmodels
+package xyz.vee-anti.discordbotrelay.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import io.appwrite.starterkit.data.repository.DiscordRepository
-import io.appwrite.starterkit.data.models.Message
+import xyz.vee-anti.discordbotrelay.data.repository.DiscordRepository
+import xyz.vee-anti.discordbotrelay.data.models.Message
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

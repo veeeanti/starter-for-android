@@ -19,6 +19,7 @@ docker run -it --rm \
     --volume ${PWD}/appwrite-data:/storage \
     appwrite/appwrite:1.6.1
 ```
+- The easiest way to do this is to use Dokploy as there is a template service ready for deployment available. 
 
 ### 2. Create Appwrite Database
 

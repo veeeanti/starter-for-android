@@ -1,4 +1,4 @@
-package io.appwrite.starterkit.ui
+package xyz.vee-anti.discordbotrelay.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,12 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import io.appwrite.starterkit.data.models.Message
-import io.appwrite.starterkit.ui.components.ChatBubble
-import io.appwrite.starterkit.ui.components.ChatHeader
-import io.appwrite.starterkit.ui.components.ChatInput
-import io.appwrite.starterkit.ui.components.EmptyChat
-import io.appwrite.starterkit.viewmodels.ChatViewModel
+import xyz.vee-anti.discordbotrelay.data.models.Message
+import xyz.vee-anti.discordbotrelay.ui.components.ChatBubble
+import xyz.vee-anti.discordbotrelay.ui.components.ChatHeader
+import xyz.vee-anti.discordbotrelay.ui.components.ChatInput
+import xyz.vee-anti.discordbotrelay.ui.components.EmptyChat
+import xyz.vee-anti.discordbotrelay.viewmodels.ChatViewModel
 
 @Composable
 fun ChatScreen(

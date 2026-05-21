@@ -1,4 +1,4 @@
-package io.appwrite.starterkit.data.models
+package xyz.vee-anti.discordbotrelay.data.models
 
 import java.util.UUID
 

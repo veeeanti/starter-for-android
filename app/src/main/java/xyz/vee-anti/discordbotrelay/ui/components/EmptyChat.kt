@@ -1,4 +1,4 @@
-package io.appwrite.starterkit.ui.components
+package xyz.vee-anti.discordbotrelay.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
