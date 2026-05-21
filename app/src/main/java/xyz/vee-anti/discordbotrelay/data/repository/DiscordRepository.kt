@@ -1,8 +1,8 @@
 package xyz.vee-anti.discordbotrelay.data.repository
 
 import android.content.Context
-import xyz.vee-anti.Client
-import xyz.vee-anti.services.Functions
+import io.appwrite.Client
+import io.appwrite.services.Functions
 import xyz.vee-anti.discordbotrelay.constants.DiscordConfig
 import xyz.vee-anti.discordbotrelay.data.models.Message
 import kotlinx.coroutines.Dispatchers
