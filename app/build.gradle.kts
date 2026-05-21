@@ -65,4 +65,7 @@ dependencies {
     // debug libraries
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // okhttp for Discord webhooks
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
