@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChatBubbleOutline
+import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +32,7 @@ fun EmptyChat(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            imageVector = Icons.Default.ChatBubbleOutline,
+            imageVector = Icons.Default.Chat,
             contentDescription = null,
             tint = Color(0xFF5865F2),
             modifier = Modifier.size(64.dp)

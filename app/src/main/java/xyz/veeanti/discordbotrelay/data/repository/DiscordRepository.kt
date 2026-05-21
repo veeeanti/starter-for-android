@@ -2,6 +2,8 @@ package xyz.veeanti.discordbotrelay.data.repository
 
 import android.content.Context
 import io.appwrite.Client
+import io.appwrite.enums.ExecutionMethod
+import io.appwrite.models.Execution
 import io.appwrite.services.Functions
 import xyz.veeanti.discordbotrelay.constants.DiscordConfig
 import xyz.veeanti.discordbotrelay.data.models.Message
@@ -53,18 +55,18 @@ class DiscordRepository private constructor(context: Context) {
 
         return try {
             val request = SendMessageRequest(content = content)
-            val json = Json.encodeToString(request)
+            val json = Json.encodeToString(SendMessageRequest.serializer(), request)
 
             val response = withContext(Dispatchers.IO) {
                 functions.createExecution(
                     functionId = DiscordConfig.APPWRITE_FUNCTION_ID,
                     body = json,
-                    method = "POST"
+                    method = ExecutionMethod.POST
                 )
             }
 
-            val body = response.body.toString()
-            val result = Json.decodeFromString<SendMessageResponse>(body)
+            val body = response.toString()
+            val result = Json.decodeFromString(SendMessageResponse.serializer(), body)
 
             if (result.success == true) {
                 Result.success(
@@ -93,12 +95,12 @@ class DiscordRepository private constructor(context: Context) {
                 functions.createExecution(
                     functionId = DiscordConfig.APPWRITE_FUNCTION_ID,
                     body = "",
-                    method = "GET"
+                    method = ExecutionMethod.GET
                 )
             }
 
-            val body = response.body.toString()
-            val result = Json.decodeFromString<GetMessagesResponse>(body)
+            val body = response.toString()
+            val result = Json.decodeFromString(GetMessagesResponse.serializer(), body)
 
             val messages = result.messages.map { msg ->
                 Message(
