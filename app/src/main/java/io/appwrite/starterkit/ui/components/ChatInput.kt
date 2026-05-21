@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -68,7 +69,7 @@ fun ChatInput(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal
                 ),
-                cursorBrush = androidx.compose.ui.text.cursor.CursorBrush.default
+                cursorBrush = androidx.compose.ui.graphics.drawscope.Fill
             )
 
             Spacer(modifier = Modifier.width(8.dp))

@@ -1,53 +1,82 @@
 package io.appwrite.starterkit.data.repository
 
 import android.content.Context
+import io.appwrite.Client
+import io.appwrite.services.Functions
 import io.appwrite.starterkit.constants.DiscordConfig
 import io.appwrite.starterkit.data.models.Message
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.util.UUID
 
+@Serializable
+data class SendMessageRequest(
+    val content: String,
+    val username: String = "Android App"
+)
+
+@Serializable
+data class SendMessageResponse(
+    val success: Boolean,
+    val message_id: String? = null,
+    val content: String? = null
+)
+
+@Serializable
+data class GetMessagesResponse(
+    val messages: List<AppwriteMessage> = emptyList(),
+    val total: Int = 0
+)
+
+@Serializable
+data class AppwriteMessage(
+    val content: String = "",
+    val sender: String = "Unknown",
+    val timestamp: String = "",
+    val isBot: Boolean = false
+)
 
 class DiscordRepository private constructor(context: Context) {
 
-    private val client = OkHttpClient()
+    private val client = Client(context)
+        .setEndpoint(DiscordConfig.APPWRITE_ENDPOINT)
+        .setProject(DiscordConfig.APPWRITE_PROJECT_ID)
+
+    private val functions = Functions(client)
 
     suspend fun sendMessage(content: String): Result<Message> {
-        val webhookUrl = DiscordConfig.DISCORD_WEBHOOK_URL
-        if (webhookUrl.isBlank()) {
-            return Result.failure(Exception("DISCORD_WEBHOOK_URL not configured"))
+        if (DiscordConfig.APPWRITE_FUNCTION_ID.isBlank()) {
+            return Result.failure(Exception("Appwrite Function ID not configured"))
         }
 
         return try {
-            val json = JSONObject().apply {
-                put("content", content)
-            }
-            val body = json.toString().toRequestBody("application/json".toMediaType())
-            val request = Request.Builder()
-                .url(webhookUrl)
-                .post(body)
-                .build()
+            val request = SendMessageRequest(content = content)
+            val json = Json.encodeToString(request)
 
             val response = withContext(Dispatchers.IO) {
-                client.newCall(request).execute()
+                functions.createExecution(
+                    functionId = DiscordConfig.APPWRITE_FUNCTION_ID,
+                    body = json,
+                    method = "POST"
+                )
             }
 
-            if (response.isSuccessful) {
+            val body = response.body.toString()
+            val result = Json.decodeFromString<SendMessageResponse>(body)
+
+            if (result.success == true) {
                 Result.success(
                     Message(
-                        id = UUID.randomUUID().toString(),
+                        id = result.message_id ?: UUID.randomUUID().toString(),
                         content = content,
                         sender = "You",
                         isBot = false
                     )
                 )
             } else {
-                Result.failure(Exception("Discord responded: ${response.code}"))
+                Result.failure(Exception("Function returned error"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -55,55 +84,36 @@ class DiscordRepository private constructor(context: Context) {
     }
 
     suspend fun fetchMessages(): Result<List<Message>> {
-        val webhookUrl = DiscordConfig.DISCORD_WEBHOOK_URL
-        if (webhookUrl.isBlank()) {
+        if (DiscordConfig.APPWRITE_FUNCTION_ID.isBlank()) {
             return Result.success(emptyList())
         }
 
         return try {
-            val request = Request.Builder()
-                .url(webhookUrl)
-                .get()
-                .build()
-
             val response = withContext(Dispatchers.IO) {
-                client.newCall(request).execute()
+                functions.createExecution(
+                    functionId = DiscordConfig.APPWRITE_FUNCTION_ID,
+                    body = "",
+                    method = "GET"
+                )
             }
 
-            if (response.isSuccessful) {
-                val body = response.body?.string() ?: ""
-                Result.success(parseMessages(body))
-            } else {
-                Result.failure(Exception("Failed to fetch messages: ${response.code}"))
+            val body = response.body.toString()
+            val result = Json.decodeFromString<GetMessagesResponse>(body)
+
+            val messages = result.messages.map { msg ->
+                Message(
+                    id = UUID.randomUUID().toString(),
+                    content = msg.content,
+                    sender = msg.sender,
+                    timestamp = msg.timestamp.toLongOrNull() ?: System.currentTimeMillis(),
+                    isBot = msg.isBot
+                )
             }
+
+            Result.success(messages)
         } catch (e: Exception) {
             Result.failure(e)
         }
-    }
-
-    private fun parseMessages(body: String): List<Message> {
-        val messages = mutableListOf<Message>()
-        try {
-            val jsonArray = org.json.JSONArray(body)
-            for (i in 0 until jsonArray.length()) {
-                val obj = jsonArray.getJSONObject(i)
-                val content = obj.optString("content", "")
-                val username = obj.optString("username", "Bot")
-                val timestamp = obj.optLong("timestamp", System.currentTimeMillis())
-                messages.add(
-                    Message(
-                        id = obj.optString("id", UUID.randomUUID().toString()),
-                        content = content,
-                        sender = username,
-                        timestamp = timestamp,
-                        isBot = true
-                    )
-                )
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return messages
     }
 
     companion object {

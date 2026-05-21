@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -58,8 +59,7 @@ fun ChatHeader(
                 .clip(RoundedCornerShape(8.dp))
                 .background(Color(0xFF36393f))
                 .padding(8.dp)
-                .width(40.dp)
-                .height(40.dp)
+                .size(40.dp)
         )
     }
 }

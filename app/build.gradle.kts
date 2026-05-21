@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -44,6 +45,9 @@ dependencies {
     // appwrite
     implementation(libs.appwrite)
 
+    // Kotlin serialization
+    implementation(libs.kotlinx.serialization.json)
+
     // splashscreen
     implementation(libs.androidx.core.splashscreen)
 
@@ -65,7 +69,4 @@ dependencies {
     // debug libraries
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // okhttp for Discord webhooks
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
