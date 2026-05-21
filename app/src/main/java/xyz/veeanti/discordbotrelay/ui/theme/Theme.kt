@@ -1,4 +1,4 @@
-package xyz.vee-anti.discordbotrelay.ui.theme
+package xyz.veeanti.discordbotrelay.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography

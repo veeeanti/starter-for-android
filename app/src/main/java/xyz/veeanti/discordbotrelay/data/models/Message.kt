@@ -1,4 +1,4 @@
-package xyz.vee-anti.discordbotrelay.data.models
+package xyz.veeanti.discordbotrelay.data.models
 
 import java.util.UUID
 

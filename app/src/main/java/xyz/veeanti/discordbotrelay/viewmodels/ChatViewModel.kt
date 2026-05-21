@@ -1,10 +1,10 @@
-package xyz.vee-anti.discordbotrelay.viewmodels
+package xyz.veeanti.discordbotrelay.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import xyz.vee-anti.discordbotrelay.data.repository.DiscordRepository
-import xyz.vee-anti.discordbotrelay.data.models.Message
+import xyz.veeanti.discordbotrelay.data.repository.DiscordRepository
+import xyz.veeanti.discordbotrelay.data.models.Message
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

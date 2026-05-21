@@ -1,4 +1,4 @@
-package xyz.vee-anti.discordbotrelay.constants
+package xyz.veeanti.discordbotrelay.constants
 
 object DiscordConfig {
     // Appwrite configuration

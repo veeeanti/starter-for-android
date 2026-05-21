@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "xyz.vee-anti.discordbotrelay"
+    namespace = "xyz.veeanti.discordbotrelay"
     compileSdk = 35
 
     defaultConfig {
@@ -14,7 +14,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-        applicationId = "xyz.vee-anti.discordbotrelay"
+        applicationId = "xyz.veeanti.discordbotrelay"
     }
 
     buildTypes {

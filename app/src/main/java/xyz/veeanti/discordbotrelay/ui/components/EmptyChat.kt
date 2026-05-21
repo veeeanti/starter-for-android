@@ -1,4 +1,4 @@
-package xyz.vee-anti.discordbotrelay.ui.components
+package xyz.veeanti.discordbotrelay.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

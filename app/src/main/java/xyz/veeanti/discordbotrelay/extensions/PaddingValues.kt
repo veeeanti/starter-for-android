@@ -1,4 +1,4 @@
-package xyz.vee-anti.discordbotrelay.extensions
+package xyz.veeanti.discordbotrelay.extensions
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
