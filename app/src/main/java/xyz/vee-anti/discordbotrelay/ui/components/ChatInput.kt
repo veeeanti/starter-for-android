@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
@@ -69,7 +70,7 @@ fun ChatInput(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal
                 ),
-                cursorBrush = androidx.compose.ui.graphics.drawscope.Fill
+                cursorBrush = SolidColor(Color(0xFF5865F2))
             )
 
             Spacer(modifier = Modifier.width(8.dp))
